@@ -54,10 +54,10 @@ else:
 if(num > -3 and num < 12):
     print("O número " + str(num) + " esta no intervalo entre -3 e 12.")
 else:
-    print("O número " + str(num) + " não se encontra no intervalo entre -3 e 12")''' 
+    print("O número " + str(num) + " não se encontra no intervalo entre -3 e 12")'''
 
 
-peso = float(input("Qual o peso do boxeador? \n--> ")) 
+'''peso = float(input("Qual o peso do boxeador? \n--> ")) 
 if (peso < 50):
     print("Peso palha.")
 elif (peso >= 50) and (peso < 59.99):
@@ -67,6 +67,27 @@ elif (peso >= 60) and (peso < 75.99):
 elif (peso >= 76) and (peso < 87.99):
     print("Peso pesado.")
 else:
-    print("Peso super pesado.")         
+    print("Peso super pesado.")'''
 
+#Valores das retas
+'''valor_a = float(input("Qual o tamanho da primira linha?\n-->"))        
+valor_b = float(input("Qual o tamanho da segunda linha?\n-->"))        
+valor_c = float(input("Qual o tamanho da terceira linha?\n-->")) 
+
+#Teste triangulos
+if(valor_a + valor_b > valor_c) and (valor_a + valor_c > valor_b) and (valor_c + valor_b):
+    if (valor_a == valor_b) and (valor_b == valor_c):
+        print("O triângulo é equilatero.")
+    elif (valor_a == valor_b) or (valor_a == valor_b) or (valor_b == valor_c):
+        print("O triângulo é isócelis")           
+    else:
+        print("O triângulo é escaleno.")
+else:
+    print("Não é um triâgulo!")'''  
+
+print("1.Calça\n2.Blusa\n3.Saia\n4.Camisa\n5.Vestido")
+peça = int(input("Qual peça você deseja comprar?\n--> "))
+if (peça == 1):
+    sexo = input("É para homem ou para mulher?")
+       
 
