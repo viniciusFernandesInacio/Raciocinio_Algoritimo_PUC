@@ -45,8 +45,16 @@ else:
     print("Não é um triâgulo!")'''  
 
 
-#
+#Algorimo que calcula os descontos de uma loja:
 print("1.Calça\n2.Blusa\n3.Saia\n4.Camisa\n5.Vestido")
 peça = int(input("Qual peça você deseja comprar?\n--> "))
+valor = ""
+sexo = int(input("Qual o seu gênero?\n1.Feminino\n2.Masculino\n--> "))
+pagamento = int(input("O pagamento será em:\n1.Cartão\n2.Dinheiro\n--> "))
+valor_final = ""
 if (peça == 1):
-    sexo = input("É para homem ou para mulher?")
+    valor = 89.90
+    if (sexo == 1 and peça == 1):
+        valor_total = valor - (0.20 * valor)
+    elif (sexo == 2 and peça == 1):
+        valor_final = valor - (0.15 * valor)    

@@ -85,9 +85,5 @@ if(valor_a + valor_b > valor_c) and (valor_a + valor_c > valor_b) and (valor_c +
 else:
     print("Não é um triâgulo!")'''  
 
-print("1.Calça\n2.Blusa\n3.Saia\n4.Camisa\n5.Vestido")
-peça = int(input("Qual peça você deseja comprar?\n--> "))
-if (peça == 1):
-    sexo = input("É para homem ou para mulher?")
-       
+
 
