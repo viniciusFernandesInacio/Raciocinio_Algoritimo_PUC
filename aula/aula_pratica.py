@@ -85,5 +85,17 @@ if(valor_a + valor_b > valor_c) and (valor_a + valor_c > valor_b) and (valor_c +
 else:
     print("Não é um triâgulo!")'''  
 
+'''soma = 0
+for i in range(3):
+    num = int(input("Digite o " + str(i + 1) + "º número:\n--> "))
+    soma += num
+print("A soma dos números é " + str(soma))'''
+
+'''soma = 0
+for i in range(2,10,3):
+    print(i)
+print("Fim ")'''
+
+
 
 
