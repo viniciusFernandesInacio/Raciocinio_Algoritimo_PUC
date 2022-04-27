@@ -96,6 +96,18 @@ for i in range(2,10,3):
     print(i)
 print("Fim ")'''
 
+'''import os
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+cls()
+try:
+    num = float(input('Entre com um valor numérico: '))
+    print(f'Número digitado = {num:.2f} \n')
+except:
+    print('Valor incorreto \n\n')
+    print('\nFIM\n')'''
 
 
-
+            
