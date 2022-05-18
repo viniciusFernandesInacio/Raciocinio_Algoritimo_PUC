@@ -1,7 +1,4 @@
 import os
-
-
-import os
 import random
 
 def cls():
