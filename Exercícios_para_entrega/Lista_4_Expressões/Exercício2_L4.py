@@ -1,4 +1,3 @@
-from operator import length_hint
 import os
 import random
 
