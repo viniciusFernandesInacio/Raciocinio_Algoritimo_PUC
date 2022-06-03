@@ -40,4 +40,4 @@ for i in range(len(matriz)):
             soma_db += matriz[i][j] 
         if j % 2 == 0:
             soma_par += matriz[i][j]      
-print(f'Diagonal principal = {soma_dp}.\nDiagonal secundária = {soma_ds}.\nAcima da diagonal = {soma_da}.\nAbaixo da diagonal principal = {soma_db}.\bColunas pares = {soma_par}')                     
+print(f'Diagonal principal = {soma_dp}.\nDiagonal secundária = {soma_ds}.\nAcima da diagonal = {soma_da}.\nAbaixo da diagonal principal = {soma_db}.\nColunas pares = {soma_par}')                     
