@@ -12,7 +12,7 @@ num = int(input('Informe o número de linhas e colunas da matriz: '))
 for i in range(num):
     matriz.append([])
     for j in range(num):
-        matriz[i].append(random.randint(0,5))
+        matriz[i].append(random.randint(0,5)) 
 
 #Imprime a matriz.
 for i in range(len(matriz[i])):
