@@ -2,18 +2,18 @@ import random
 import os
 
 # ------ CONSTANTES ------
-QTD_NAVIOS = 7
-QTD_SUBMARINOS = 4
-QTD_POSTOS = 5
+qtd_navios = 1
+qtd_submarinos = 1
+qtd_postos = 1
 
-AGUA_NEV = 0        #'.' Código e símbolo para água no nevoiro
-NAVIO_NEV = 1       #'.' Código e símbolo para navio no nevoeiro
-SUBMARINO_NEV = 2   #'.' Código e símbolo para submarino no nevoeiro
-POSTO_NEV = 3       #'.' Código e símbolo para posto no nevoeiro
-NAVIO = 4           #'N' Código e símbolo para navio atingido
-SUBMARINO = 5       #'S' Código e símbolo para submarino atingido
-POSTO = 6           #'P' Código e símbolo para posto atingido
-AGUA_ATINGIDA = 7   #'%' Código e símbolo para água atingida
+agua_nev = 0        #'.' Código e símbolo para água no nevoiro
+navio_nev = 1       #'.' Código e símbolo para navio no nevoeiro
+submarino_nev = 2   #'.' Código e símbolo para submarino no nevoeiro
+posto_nev = 3       #'.' Código e símbolo para posto no nevoeiro
+navio = 4           #'N' Código e símbolo para navio atingido
+submarino = 5       #'S' Código e símbolo para submarino atingido
+posto = 6           #'P' Código e símbolo para posto atingido
+agua_atingida = 7   #'%' Código e símbolo para água atingida
 
 # ------ VARIÁVEIS GLOBAIS ------
 mar_inimigo = []
@@ -22,10 +22,9 @@ nome = ""           #Nome do jogador
 qtdD = 0            #Quantidade de disparo realizados
 qtdN = 0            #Quantidade de navios atingidos
 qtdS = 0            #Quantidade de submarinos atingidos
-qtdD_temp = 0       #Quantidade temporária de disparos
+qtdD_temp = 0       #Quantidade temporaria de disparos
 msg = ""            #Mensagens que seram printadas na tela
 total_pontos = 0    #Total de pontos conquistados
-ret = 1             #Váriavel que consta se o jogo deve ser continuado ou não
 
 def inicia_mar_inimigo():
     """
@@ -33,9 +32,9 @@ def inicia_mar_inimigo():
     """
     global mar_inimigo
     mar_inimigo = [[0 for x in range(10)]for y in range(10)]
-    posiciona_elemento(NAVIO_NEV, QTD_NAVIOS)
-    posiciona_elemento(POSTO_NEV, QTD_POSTOS)
-    posiciona_elemento(SUBMARINO_NEV, QTD_SUBMARINOS)
+    posiciona_elemento(navio_nev, qtd_navios)
+    posiciona_elemento(posto_nev, qtd_postos)
+    posiciona_elemento(submarino_nev, qtd_submarinos)
 
 
 def posiciona_elemento(estrutura, quantidade):
@@ -48,7 +47,7 @@ def posiciona_elemento(estrutura, quantidade):
         while True:
             x = random.randint(0, 9)
             y = random.randint(0, 9)
-            if mar_inimigo[y][x] == AGUA_NEV:
+            if mar_inimigo[y][x] == 0:
                 mar_inimigo[y][x] = estrutura
                 break
 
@@ -58,7 +57,7 @@ def tipo_elemento(codigo):
     Atrela um código a um elemento grafico do jogo (EXEMPLO: O código pra água atingida é '7' e o elemento grafico é '%')
     Parâmetro código: Código das variaveis que teram elementos graficos atrelados a elas (as variáveis foram declaradas no inicio do código)
     """
-    tipos = {AGUA_NEV: ".", NAVIO_NEV: ".", SUBMARINO_NEV: ".", POSTO_NEV: ".", NAVIO: "N", SUBMARINO: "S", POSTO: "P", AGUA_ATINGIDA: "%"}
+    tipos = {0: ".", 1: "n", 2: "s", 3: "p", 4: "N", 5: "S", 6: "P", 7: "%"}
     return tipos[codigo]
 
 
@@ -106,7 +105,6 @@ def inicializa_jogo():
     Inicializa o jogo realizando a limpeza da tela, declarando variáveis e atualizando a mensagem de início
     """
     os.system("cls" if os.name == "nt" else "clear")
-    global ret
     global msg
     global qtdD
     global qtdN
@@ -114,7 +112,6 @@ def inicializa_jogo():
     global qtdD_temp
     global total_pontos
     global disparos
-    ret = 1
     qtdD = 0
     qtdN = 0
     qtdS = 0
@@ -141,7 +138,7 @@ def apresenta_tela():
 def verifica_disparo(coordenada):
     """
     Verifica se a coordenada digitada pelo usuário bate com algum código, da a postuação e atribui o que o usuário o que ele atingiu à variavel da mensagem
-    Parâmetro 'coordenada': Coordenadas do ultimo tiro do jogador (as coordenadas são coletadas usando a função 'pedir_coordenadas')
+    Parâmetro 'coordenada': Coordenadas do ultimo tiro do jogador (as coordenadas são coletadas usando a função 'pedir_coordenadas') 
     """
     global qtdD
     global qtdN
@@ -155,26 +152,26 @@ def verifica_disparo(coordenada):
     if qtdD_temp == 5:
         total_pontos -= 1
         qtdD_temp = 0
-    if mar_inimigo[coordenada[1]][coordenada[0]] == AGUA_NEV:
+    if mar_inimigo[coordenada[1]][coordenada[0]] == agua_nev:
         msg = "Água atingida, realize outro disparo!"
-        mar_inimigo[coordenada[1]][coordenada[0]] = AGUA_ATINGIDA
-    elif mar_inimigo[coordenada[1]][coordenada[0]] == NAVIO_NEV:
+        mar_inimigo[coordenada[1]][coordenada[0]] = agua_atingida
+    elif mar_inimigo[coordenada[1]][coordenada[0]] == navio_nev:
         msg = "Návio atingido, realize outro disparo!"
         qtdN += 1
         total_pontos += 5
-        mar_inimigo[coordenada[1]][coordenada[0]] = NAVIO
-    elif mar_inimigo[coordenada[1]][coordenada[0]] == SUBMARINO_NEV:
+        mar_inimigo[coordenada[1]][coordenada[0]] = navio
+    elif mar_inimigo[coordenada[1]][coordenada[0]] == submarino_nev:
         msg = "Submarino atingido, realize outro disparo!"
         qtdS += 1
         total_pontos += 7
-        mar_inimigo[coordenada[1]][coordenada[0]] = SUBMARINO
-    elif mar_inimigo[coordenada[1]][coordenada[0]] == POSTO_NEV:
-        mar_inimigo[coordenada[1]][coordenada[0]] = POSTO
+        mar_inimigo[coordenada[1]][coordenada[0]] = submarino
+    elif mar_inimigo[coordenada[1]][coordenada[0]] == posto_nev:
+        mar_inimigo[coordenada[1]][coordenada[0]] = posto
         msg = "Posto atingido, fim de jogo!"
-        return 0
-    if qtdN == QTD_NAVIOS and qtdS == QTD_SUBMARINOS:
+        return "fim"
+    if qtdN == qtd_navios and qtdS == qtd_submarinos:
         msg = "Todos os navios e submarinos foram atingidos, fim de jogo!"
-        return 0
+        return "fim"
 
 
 def jogo():
@@ -182,10 +179,6 @@ def jogo():
     Realiza o inicio do jogo pedindo as coordenadas do primeiro tiro chamando a função 'pedir_coordenadas'
     """
     def pedir_coordenada():
-        """
-        Função aninhada que pede coordenadas ao usuário e a retorna para ser usada como parâmetro na função verifica_disparo
-        :return:
-        """
         global disparos
         while True:
             disparo_t = []
@@ -207,14 +200,12 @@ def jogo():
             disparos.append(disparo_t)
             return disparo_t
 
-    global ret
     inicializa_jogo()
     inicia_mar_inimigo()
     nome_piloto()
     while True:
         apresenta_tela()
-        ret = verifica_disparo(pedir_coordenada())
-        if ret == 0:
+        if verifica_disparo(pedir_coordenada()) == "fim":
             apresenta_tela()
             reiniciar = input("Gostaria de reiniciar o jogo? (s/n) ")
             if reiniciar == "s":
